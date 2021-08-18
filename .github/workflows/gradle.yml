@@ -3,9 +3,6 @@
 
 name: Github Action Practice
 
-env:
-  S3_BUCKET_NAME: ayoung-bucket
-
 on:
   push:
     branches: [ master ]
@@ -46,8 +43,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-          --region ap-northeast-2 \
-          --acl private \ 
-          ./springboot-build.zip s3://$S3_BUCKET_NAME/
+        run: aws s3 cp --region ap-northeast-2 --acl private ./springboot-build.zip s3://ayoung-bucket/
