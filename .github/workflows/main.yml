@@ -36,6 +36,10 @@ jobs:
       - name: Copy Jar
         run: cp ./build/libs/*.jar ./deploy/
 
+      # appspec.yml Copy
+      - name: Copy appspec
+        run: cp appspec.yml ./deploy/
+
       # 압축파일 형태로 전달
       - name: Make zip file
         run: zip -r -qq -j ./springboot-build.zip ./deploy
@@ -51,4 +55,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws deploy create-deployment --application-name SpringGithubAction --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name code-deploy-group --file-exists-behavior OVERWRITE --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=springboot-build.zip
+        run: aws deploy create-deployment --application-name ayoung-app --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name code-deploy-group --file-exists-behavior OVERWRITE --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=springboot-build.zip --region ap-northeast-2
