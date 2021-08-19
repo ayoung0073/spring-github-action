@@ -10,7 +10,7 @@ source ${ABSDIR}/profile.sh
 function switch_proxy() {
     IDLE_PORT=$(find_idle_port)
 
-    echo "> 전환할 Port: $IDLE_PORT"
+    echo "> 전환할 Port: $IDLE_PORT" >> /home/ubuntu/deploy/deploy.log
     echo "> Port 전환"
     # nginx와 연결한 주소 생성
     # | sudo tee ~ : 앞에서 넘긴 문장을 service-url.inc에 덮어씀

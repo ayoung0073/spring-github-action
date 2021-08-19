@@ -31,8 +31,8 @@ IDLE_PROFILE=$(find_idle_profile)
 
     if [ ${IDLE_PROFILE} == real1 ]
     then
-      echo "8080"
+      echo "8080" >> /home/ubuntu/deploy/deploy.log
     else
-      echo "8081"
+      echo "8081" >> /home/ubuntu/deploy/deploy.log
     fi
 }
